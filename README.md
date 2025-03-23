@@ -9,7 +9,7 @@
 [![tests](https://github.com/tuckluck/Assignment2/actions/workflows/testsDS.yml/badge.svg)](https://github.com/tuckluck/Assignment2/actions)
 
 
-Welcome to the Assignment 3 repo. Please follow the directions below to download and run the code for the direct stiffness solver
+Welcome to the Assignment 3 repo. Please follow the directions below to download and run the code 
 
 To install this package, please begin by setting up a conda environment (mamba also works):
 ```bash
