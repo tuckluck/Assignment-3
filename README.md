@@ -29,7 +29,7 @@ Ensure that pip is using the most up to date version of setuptools:
 pip install --upgrade pip setuptools wheel
 ```
 
-Create an editable install of the Newtonian method code (note: you must be in the correct directory):
+Create an editable install of the code (note: you must be in the correct directory):
 ```bash
 pip install -e .
 ```
