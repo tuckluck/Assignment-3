@@ -33,11 +33,7 @@ Create an editable install of the code (note: you must be in the correct directo
 ```bash
 pip install -e .
 ```
-Test that the code is working with pytest:
-```bash
-pytest -v --cov=direct_stiffness --cov-report term-missing
-```
-Code coverage should be nearly 100%. Now you are prepared to write your own code based on this method and/or run the tutorial. 
+
 
 Setup juypter notebook for tutorials
 
