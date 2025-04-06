@@ -43,7 +43,7 @@ pip install jupyter
 
 Run Tutorial
 ```bash
-jupyter notebook fea_tutorial_1.ipynb
+jupyter notebook Part4_tutorial.ipynb
 ```
 
 
