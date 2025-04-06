@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 from finiteelementanalysis import discretization as di
@@ -71,6 +73,7 @@ def plot_mesh_2D(fname: str, ele_type: str, coords: np.ndarray, connect: np.ndar
 
     # Save with high DPI and clean style
     plt.savefig(fname, dpi=300, bbox_inches='tight', pad_inches=0.1)
+    plt.close()
     return
 
 
@@ -213,7 +216,7 @@ def interpolate_scalar_to_gauss_pts(ele_type: str, num_gauss_pts: int, fcn_to_in
             shape_fcn_eval = shape_fcn(gauss_pts[:, jj])
 
             # Interpolate function at Gauss points
-            fcn_interp_mesh_gauss_pts[kk, jj] = fcn_values_at_nodes.T @ shape_fcn_eval  # Dot product
+            fcn_interp_mesh_gauss_pts[kk, jj] = (fcn_values_at_nodes.T @ shape_fcn_eval).item() # Dot product
 
     return fcn_interp_mesh_gauss_pts
 
@@ -383,6 +386,7 @@ def plot_interpolation_with_error(
     plt.suptitle(f"Gauss Point Interpolation for {ele_type}", fontsize=14, weight='bold')
     plt.tight_layout()
     plt.savefig(fname, dpi=300, bbox_inches='tight', pad_inches=0.1)
+    plt.close()
     return
 
 
@@ -476,6 +480,7 @@ def plot_interpolation_gradient_with_error(
     plt.suptitle(f"Gauss Point Gradient Interpolation for {ele_type}", fontsize=15, weight='bold')
     plt.tight_layout()
     plt.savefig(fname, dpi=300, bbox_inches='tight', pad_inches=0.1)
+    plt.close()
     return
 
 
@@ -747,46 +752,6 @@ def plot_element_quality_histograms(
 
     plt.tight_layout(rect=[0, 0, 1, 0.95])  # Leave space for suptitle
     plt.savefig(fname, bbox_inches='tight', pad_inches=0.1)
+    plt.close()
     return
 
-
-
-# do class Jupyter notebook
-
-
-# class planning:
-# Starting point -- structured mesh -- illustrate structured mesh
-#  show interpolation on a structured mesh
-# plot interpolation on gauss points?
-# plot error on gauss points?
-
-# Next -- what if you want to mesh a complex geometry?
-# show example complex geometry
-# show preliminary parts of Delauney triangulation algorithm -- basically explain the algorithm with some simple demos (don't code this)
-# explain what is Gmsh
-# show code calling gmsh
-# show results
-
-# How can meshing lead to simulation errors?
-# too coarse of a mesh -- show whole domain
-# wrong element type -- show linear vs. quadratic on a domain w/ quadratic interpolation
-# h-refinement (smaller elements)
-# p-refinement (higher order polynomials)
-# too distorted of a mesh -- show single element highly distorted
-# Aspect Ratio Measures element elongation (max/min edge length) 1-5
-# Skewness Deviation from an ideal shape 0
-# Condition Number How well the element behaves numerically < 1000
-# Jacobian Determinant Ensures elements aren’t inverted > 0
-# Minimum Angle Checks if angles are too small > 30°
-
-# make histograms for all element quality metrics (probably don't need to plot them on the mesh directly)
-
-# computational trade-offs --> coming down the line (FEA simulation time)
-# keep in mind that for FEA, we are using the mesh to find the field, we have to run
-# mesh refinement studies to know if we are converging 
-
-# in class lab -->
-# define a shape
-# mesh the shape w/ a linear + quadratic mesh of different sizes
-# interpolate over the domain
-# plot error
