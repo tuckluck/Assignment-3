@@ -1,0 +1,1 @@
+In this assignment i used chatGPT to help me understand some of equations used in the FEA software and to help plot functions.
