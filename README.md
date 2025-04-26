@@ -41,7 +41,7 @@ Setup juypter notebook for tutorials
 pip install jupyter
 ```
 
-Run Tutorial
+Make sur eyou are in the tutorials folder then run Tutorial
 ```bash
 jupyter notebook Part4_tutorial_A-C.ipynb
 ```
